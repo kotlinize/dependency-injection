@@ -67,7 +67,12 @@ publishing {
 }
 
 signing {
-    sign(publishing.publications["maven"])
+    signing {
+        setRequired {
+            // signing is only required if the artifacts are to be published
+            gradle.taskGraph.allTasks.any { it.equals(PublishToMavenRepository()) }
+        }
+    }
 }
 
 repositories {

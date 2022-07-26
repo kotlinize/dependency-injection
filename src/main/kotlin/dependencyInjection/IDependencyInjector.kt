@@ -5,7 +5,7 @@ import subscriber.ISubscriber
 /**
  * The interface of the Dependency dependencyInjection.Injection System.
  */
-interface IDependencyInjection {
+interface IDependencyInjector {
 
     /**
      * Registers a dependency into the Dependency Injector.

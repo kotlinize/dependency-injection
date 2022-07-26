@@ -3,7 +3,7 @@ package dependencyInjection
 import subscriber.ISubscriber
 
 @Suppress("UNCHECKED_CAST")
-class Injection private constructor() : IDependencyInjection {
+class Injector private constructor() : IDependencyInjector {
 
     /**
      * The Registry of items held by the Dependency Injector.
@@ -13,16 +13,16 @@ class Injection private constructor() : IDependencyInjection {
     private val subscriberRegistry = HashSet<RegistryItem<Any>>()
 
     companion object {
-        private var injectorInstance: Injection? = null
+        private var injectorInstance: Injector? = null
 
         /**
-         * Current [Injection] instance, if initialized. If not initialized, this will return a new [Injection] instance.
+         * Current [Injector] instance, if initialized. If not initialized, this will return a new [Injector] instance.
          */
         @get:Synchronized
-        val instance: IDependencyInjection
-            get() = injectorInstance?.resolve(IDependencyInjection::class.java)
+        val instance: IDependencyInjector
+            get() = injectorInstance?.resolve(IDependencyInjector::class.java)
                 ?: injectorInstance
-                ?: Injection().also { injectorInstance = it }
+                ?: Injector().also { injectorInstance = it }
     }
 
     override fun <T> register(type: Class<T>, provider: T, identifier: String?): Boolean {

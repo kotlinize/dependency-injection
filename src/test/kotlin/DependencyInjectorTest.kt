@@ -1,15 +1,16 @@
-import dependencyInjection.IDependencyInjection
-import dependencyInjection.Injection
+import dependencyInjection.IDependencyInjector
+import dependencyInjection.Injector
 import dependencyInjection.publishToInjector
 import dependencyInjection.registerToInjector
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import subscriber.ISubscriber
 import kotlin.test.*
 
-class DependencyInjectionTest {
+class DependencyInjectorTest {
 
-    lateinit var injector: IDependencyInjection
+    lateinit var injector: IDependencyInjector
     private val testName = Name(
         firstName = FIRST_NAME,
         lastName = LAST_NAME,
@@ -26,7 +27,7 @@ class DependencyInjectionTest {
     @BeforeEach
     fun setup() {
         // Given an Injection Implementation.
-        injector = Injection.instance
+        injector = Injector.instance
 
         // Given an object registered into the dependency injector.
         injector.register(
@@ -34,6 +35,11 @@ class DependencyInjectionTest {
             provider = testName,
             identifier = OWNER_NAME
         )
+    }
+
+    @AfterEach
+    fun tearDown() {
+        injector.unloadDependencies()
     }
 
     @Test
@@ -82,12 +88,21 @@ class DependencyInjectionTest {
         // Given an Injector Instance.
         assertNotNull(injector)
 
-        testName.registerToInjector(OWNER_NAME)
+        val name = Name(
+            firstName = "Mike",
+            lastName = "Reynolds",
+            phoneNumber = PHONE_NUMBER
+        )
 
-        injector.addSubscriber(Name::class.java, TestSubscriber())
-        injector.addSubscriber(Long::class.java, TestSubscriber2())
+        name.registerToInjector(FIRST_NAME + LAST_NAME)
 
-        testName.publishToInjector()
+        val resolvedDependency = injector.resolve(Name::class.java, FIRST_NAME + LAST_NAME)
+
+        assertNotNull(resolvedDependency, "Dependency was unexpectedly null.")
+
+        assertSame(name, resolvedDependency, "Object was not the same.")
+
+        name.publishToInjector()
     }
 
     @Test
@@ -107,13 +122,13 @@ class DependencyInjectionTest {
         val phoneNumber: Long
     )
 
-    private class TestSubscriber: ISubscriber<Name> {
+    private class TestSubscriber : ISubscriber<Name> {
         override fun process(data: Name) {
             assertIs<Name>(value = data, message = "Item not instance of Name.")
         }
     }
 
-    private class TestSubscriber2: ISubscriber<Long> {
+    private class TestSubscriber2 : ISubscriber<Long> {
         override fun process(data: Long) {
             assertIs<Long>(value = data, message = "Item not instance of Long.")
         }
