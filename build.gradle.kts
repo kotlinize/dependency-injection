@@ -55,8 +55,8 @@ publishing {
             maven {
 
                 credentials {
-                    username = "mreynolds25"
-                    password = "ARmalite##01"
+                    username = ""
+                    password = ""
                 }
 
                 name = artifactId
