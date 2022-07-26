@@ -14,7 +14,7 @@ object App {
     }
     object Artifact {
         const val NAME = "dependency-injection"
-        const val VERSION = "0.0.1"
+        const val VERSION = "0.0.2"
         const val GIT_URL = "scm:git:git://github.com/kotlinize/dependency-injection.git"
         const val SOURCE_CODE_URL = "https://github.com/kotlinize/dependency-injection"
         const val DESCRIPTION = "Library for Kotlin Dependency Injection"
