@@ -22,10 +22,8 @@ jobs:
         server-password: MAVEN_PASSWORD
         gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
         gpg-passphrase: MAVEN_GPG_PASSPHRASE
-    - name: Gradle Build
-      run: gradle build
     - name: Deploy with Maven
-      run: mvn -B clean deploy -Pci-cd
+      run: gradle -PNEXUS_USERNAME=MAVEN_USERNAME -PNEXUS_PASSWORD=NEXUS_PASSWORD publish
       env:
         MAVEN_USERNAME: ${{ secrets.NEXUS_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
