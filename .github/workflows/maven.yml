@@ -25,9 +25,11 @@ jobs:
     - name: Generate POM File
       run: mvn archetype:generate "-DgroupId=com.kotlinizer" "-DartifactId=dependency-injection" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DarchetypeVersion=1.4" "-DinteractiveMode=false"
     - name: Change Directory
-      run: cd /home/runner/work/dependency-injection/dependency-injection/dependency-injection
+      run: cd /home/runner/work/dependency-injection/dependency-injection/dependency-injection/
+    - name: List Directory
+      run: ls
     - name: Deploy Maven Project
-      run: mvn deploy
+      run: mvn deploy "-DpomFile=/home/runner/work/dependency-injection/dependency-injection/dependency-injection/pom.xml"
       env:
         MAVEN_USERNAME: ${{ secrets.NEXUS_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
