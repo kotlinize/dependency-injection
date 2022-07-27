@@ -25,7 +25,7 @@ jobs:
     - name: Generate POM File
       run: mvn archetype:generate "-DgroupId=com.kotlinizer" "-DartifactId=dependency-injection" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DarchetypeVersion=1.4" "-DinteractiveMode=false"
     - name: Deploy Maven Project
-      run: mvn deploy -PpomFile="/dependency-injection/pom.xml"
+      run: mvn deploy -PpomFile="dependency-injection/dependency-injection/pom.xml"
       env:
         MAVEN_USERNAME: ${{ secrets.NEXUS_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
