@@ -25,8 +25,6 @@ object App {
         const val USER_ID = "mreynolds25"
     }
     object Publish {
-        val USERNAME: String = System.getenv("NEXUS_USERNAME")
-        val PASSWORD: String = System.getenv("NEXUS_PASSWORD")
         const val URL = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
     }
     object License {
@@ -79,8 +77,8 @@ publishing {
         repositories {
             maven {
                 credentials {
-                    username = App.Publish.USERNAME
-                    password = App.Publish.PASSWORD
+                    username = System.getenv("NEXUS_USERNAME")
+                    password = System.getenv("NEXUS_PASSWORD")
                 }
                 name = App.Artifact.NAME
                 url = URI.create(App.Publish.URL)
