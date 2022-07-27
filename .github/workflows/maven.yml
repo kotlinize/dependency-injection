@@ -32,6 +32,10 @@ jobs:
       run: cd dependency-injection
     - name: List Files
       run: ls
+    - name: Change Directory
+      run: cd dependency-injection
+    - name: List Files
+      run: ls
       env:
         MAVEN_USERNAME: ${{ secrets.NEXUS_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
