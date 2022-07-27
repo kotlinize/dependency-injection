@@ -4,7 +4,7 @@
 name: Java CI with Maven
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -19,7 +19,7 @@ jobs:
           server-id: ossrh
           server-username: MAVEN_USERNAME
           server-password: MAVEN_PASSWORD
-          gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+          gpg-private-key: MAVEN_GPG_PRIVATE_KEY
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
         - name: Deploy with Maven
           run: mvn -B clean deploy -Pci-cd
@@ -27,3 +27,4 @@ jobs:
             MAVEN_USERNAME: ${{ secrets.NEXUS_USERNAME }}
             MAVEN_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
             MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+            MAVEN_GPG_PRIVATE_KEY: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
