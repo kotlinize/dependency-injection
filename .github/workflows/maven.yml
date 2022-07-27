@@ -25,7 +25,11 @@ jobs:
     - name: Generate POM File
       run: mvn archetype:generate "-DgroupId=com.kotlinizer" "-DartifactId=dependency-injection" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DarchetypeVersion=1.4" "-DinteractiveMode=false"
     - name: Change Directory
-      run: cd dependency-injection/dependency-injection
+      run: cd dependency-injection
+    - name: List Files
+      run: ls
+    - name: Change Directory
+      run: cd dependency-injection
     - name: List Files
       run: ls
       env:
