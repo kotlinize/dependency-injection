@@ -77,8 +77,8 @@ publishing {
         repositories {
             maven {
                 credentials {
-                    username = project.property("NEXUS_USERNAME") as String?
-                    password = project.property("NEXUS_PASSWORD") as String?
+                    username = project.property("NEXUS_USERNAME") as? String? ?: ""
+                    password = project.property("NEXUS_PASSWORD") as? String? ?: ""
                 }
                 name = App.Artifact.NAME
                 url = URI.create(App.Publish.URL)
