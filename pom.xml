@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project>
     <modelVersion>4.0.0</modelVersion>
-
-    <scm>
-        <connection>scm:git:git://github.com/kotlinize/dependency-injection.git</connection>
-        <developerConnection>scm:git:git://github.com/kotlinize/dependency-injection.git"</developerConnection>
-        <url>https://github.com/kotlinize/dependency-injection</url>
-    </scm>
-
-    <distributionManagement>
-        <repository>
-            <id>ossrh</id>
-            <name>Central Repository OSSRH</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
-
-
     <groupId>com.kotlinizer</groupId>
     <artifactId>dependency-injection</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -48,5 +30,19 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
+
+    <scm>
+        <connection>scm:git:git://github.com/kotlinize/dependency-injection.git</connection>
+        <developerConnection>scm:git:git://github.com/kotlinize/dependency-injection.git"</developerConnection>
+        <url>https://github.com/kotlinize/dependency-injection</url>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>ossrh</id>
+            <name>Central Repository OSSRH</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
 </project>
