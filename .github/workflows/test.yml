@@ -17,4 +17,4 @@ jobs:
           java-version: 1.8
           server-id: ossrh
       - name: Run Unit Tests
-        run: gradle test
+        run: gradle test -i
