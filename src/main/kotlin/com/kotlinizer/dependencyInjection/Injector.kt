@@ -1,6 +1,6 @@
-package dependencyInjection
+package com.kotlinizer.dependencyInjection
 
-import subscriber.ISubscriber
+import com.kotlinizer.subscriber.ISubscriber
 
 @Suppress("UNCHECKED_CAST")
 class Injector private constructor() : IDependencyInjector {

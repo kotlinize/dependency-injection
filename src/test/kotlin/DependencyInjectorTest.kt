@@ -1,11 +1,11 @@
-import dependencyInjection.IDependencyInjector
-import dependencyInjection.Injector
-import dependencyInjection.publishToInjector
-import dependencyInjection.registerToInjector
+import com.kotlinizer.dependencyInjection.IDependencyInjector
+import com.kotlinizer.dependencyInjection.Injector
+import com.kotlinizer.dependencyInjection.publishToInjector
+import com.kotlinizer.dependencyInjection.registerToInjector
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import subscriber.ISubscriber
+import com.kotlinizer.subscriber.ISubscriber
 import kotlin.test.*
 
 class DependencyInjectorTest {

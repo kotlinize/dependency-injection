@@ -1,6 +1,6 @@
-package dependencyInjection
+package com.kotlinizer.dependencyInjection
 
-import subscriber.ISubscriber
+import com.kotlinizer.subscriber.ISubscriber
 
 /**
  * The interface of the Dependency dependencyInjection.Injection System.

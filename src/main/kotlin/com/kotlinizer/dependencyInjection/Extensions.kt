@@ -1,4 +1,4 @@
-package dependencyInjection
+package com.kotlinizer.dependencyInjection
 
 /**
  * Assists in publishing any object to the dependency injector.
