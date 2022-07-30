@@ -3,8 +3,8 @@ import java.net.URI
 
 plugins {
     kotlin("jvm") version "1.6.21"
-    id("maven-publish")
-    id("signing")
+    `maven-publish`
+    signing
 }
 
 object App {
@@ -14,7 +14,7 @@ object App {
     }
     object Artifact {
         const val NAME = "dependency-injection"
-        const val VERSION = "0.0.2"
+        const val VERSION = "0.0.3"
         const val GIT_URL = "scm:git:git://github.com/kotlinize/dependency-injection.git"
         const val SOURCE_CODE_URL = "https://github.com/kotlinize/dependency-injection"
         const val DESCRIPTION = "Library for Kotlin Dependency Injection"
@@ -77,8 +77,8 @@ publishing {
         repositories {
             maven {
                 credentials {
-                    username = project.findProperty("NEXUS_USERNAME") as? String? ?: ""
-                    password = project.findProperty("NEXUS_PASSWORD") as? String? ?: ""
+                    username = project.findProperty("NEXUS_USERNAME") as? String? ?: System.getenv("NEXUS_USERNAME")
+                    password = project.findProperty("NEXUS_PASSWORD") as? String? ?: System.getenv("NEXUS_PASSWORD")
                 }
                 name = App.Artifact.NAME
                 url = URI.create(App.Publish.URL)

@@ -72,9 +72,9 @@ class Injector private constructor() : IDependencyInjector {
         }
     }
 
-    private data class RegistryItem<S>(
+    private data class RegistryItem<I>(
         val identifier: String?,
         val clazz: Class<*>,
-        val item: S
+        val item: I
     )
 }
